@@ -1,0 +1,39 @@
+@import 'style2';
+$color1: blue;
+$color2: yellow;
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -khtml-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+%width-50 {
+    width: 50%;
+}
+
+.beige-background {
+    background-color: beige;
+    @include border-radius(10px);
+}
+
+h1 {
+    color: $color1;
+    span {
+        color: red;
+        }
+    &.extra {
+        color: green;
+        &:hover {
+            color: $color2;
+        }
+    }
+}
+
+h2 {@extend %width-50;
+    @extend h1.extra;
+    @extend .beige-background;
+}
